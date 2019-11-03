@@ -27,7 +27,7 @@ function App() {
               lng: 30.33
             }
           }
-          zoom={11}
+          zoom={1}
           polygonData={polygonData}
         />
       </div>

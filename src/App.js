@@ -5,7 +5,7 @@ import "./App.css";
 require('dotenv').config();
 
 function App() {
-  const [polygonData, setPolygonData] = React.useState(null);
+  const [shapes, setShapes] = React.useState(null);
   return (
     <div className="App">
       <div className="upload-container">
@@ -13,8 +13,11 @@ function App() {
           heading="Attachment"
           description="Click to upload"
           onHandleLoad={(v) => {
-            const result = atob(v.result.replace('data:application/json;base64,', ''));
-            setPolygonData(JSON.parse(result));
+            let result = v.result.replace('data:application/json;base64,', '');
+            result = result.replace('data:application/octet-stream;base64,', '');
+            result = atob(result);
+            const shapes = JSON.parse(result).features;
+            setShapes(shapes);
           }}
           showSelectedFiles={false}
         />
@@ -28,7 +31,7 @@ function App() {
             }
           }
           zoom={1}
-          polygonData={polygonData}
+          data={shapes}
         />
       </div>
     </div>

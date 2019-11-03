@@ -2,12 +2,21 @@ import React from "react";
 import GoogleMapReact from "google-map-react";
 import { multiPolygon, polygon } from '@turf/helpers';
 
-export const CustomGoogleMap = ({ center, zoom, polygonData }) => {
+export const CustomGoogleMap = ({ center, zoom, data }) => {
+  console.log(data);
   const mapHandler = React.useRef(null);
 
   React.useEffect(() => {
-    mapHandler.current && mapHandler.current.data.addGeoJson(polygon(polygonData));
-  }, [polygonData]);
+    drawShapes(data);
+  }, [data]);
+
+  const drawShapes = (data) => {
+    if (mapHandler.current) {
+      data.forEach((item) => {
+        mapHandler.current.data.addGeoJson(item);
+      });
+    }
+  };
 
   return (
     <GoogleMapReact
@@ -16,7 +25,6 @@ export const CustomGoogleMap = ({ center, zoom, polygonData }) => {
       defaultZoom={zoom}
       onGoogleApiLoaded={({map, maps}) => {
         mapHandler.current = map;
-        polygonData && map.data.addGeoJson(polygon(polygonData));
       }}
       yesIWantToUseGoogleMapApiInternals
     >

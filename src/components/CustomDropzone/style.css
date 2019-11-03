@@ -1,0 +1,21 @@
+.upload-photo-inner-container {
+  display: flex;
+  width: 500px;
+  height: 150px;
+  margin: 0 auto;
+  justify-content: center;
+  align-items: center;
+}
+
+.upload-photo-inner-container .dropzone {
+  cursor: pointer;
+  outline: none;
+}
+
+.upload-photo-inner-container img {
+  height: 100px;
+}
+
+.upload-photo-inner-container p {
+  margin: 5px 0;
+}

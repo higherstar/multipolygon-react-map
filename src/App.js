@@ -3,6 +3,7 @@ import { CustomDropzone } from "./components/CustomDropzone";
 import "./App.css";
 
 function App() {
+  const [polygonData, setPolygonData] = React.useState(null);
   return (
     <div className="App">
       <div className="upload-container">
@@ -10,7 +11,8 @@ function App() {
           heading="Attachment"
           description="Click to upload"
           onHandleLoad={(v) => {
-            console.log(v);
+            const result = atob(v.result.replace('data:application/json;base64,', ''));
+            setPolygonData(JSON.parse(result));
           }}
           showSelectedFiles={false}
         />

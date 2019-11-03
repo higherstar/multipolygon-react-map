@@ -1,9 +1,7 @@
 import React from "react";
 import GoogleMapReact from "google-map-react";
-import { multiPolygon, polygon } from '@turf/helpers';
 
 export const CustomGoogleMap = ({ center, zoom, data }) => {
-  console.log(data);
   const mapHandler = React.useRef(null);
 
   React.useEffect(() => {
@@ -27,8 +25,6 @@ export const CustomGoogleMap = ({ center, zoom, data }) => {
         mapHandler.current = map;
       }}
       yesIWantToUseGoogleMapApiInternals
-    >
-
-    </GoogleMapReact>
+    />
   )
 };

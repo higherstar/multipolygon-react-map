@@ -25,3 +25,8 @@
   height: 150px;
   background-color: #09d3ac;
 }
+
+.map-container {
+  height: 90vh;
+  background-color: #aaa;
+}

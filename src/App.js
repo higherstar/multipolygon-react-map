@@ -1,6 +1,8 @@
 import React from "react";
 import { CustomDropzone } from "./components/CustomDropzone";
+import { CustomGoogleMap } from "./components/CustomGoogleMap";
 import "./App.css";
+require('dotenv').config();
 
 function App() {
   const [polygonData, setPolygonData] = React.useState(null);
@@ -18,7 +20,16 @@ function App() {
         />
       </div>
       <div className="map-container">
-
+        <CustomGoogleMap
+          center={
+            {
+              lat: 59.95,
+              lng: 30.33
+            }
+          }
+          zoom={11}
+          polygonData={polygonData}
+        />
       </div>
     </div>
   );
